@@ -11,18 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/','PagesController@home')->name('pages.home');
+
 
 Auth::routes();
 
-Route::get('/admin/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::resource('pages', 'PagesController');
 });
 
-Route::get('pages/{page}','PagesController@show')->name('pages.show');
+Route::get('{page}','PagesController@show')->name('pages.show');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');

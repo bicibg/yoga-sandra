@@ -11,16 +11,20 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Titel</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{$page->title}}">
                 </div>
                 <div class="form-group">
-                    <label for="content">Content</label>
+                    <label for="image">Hintergrundbild</label>
+                    <input type="file" class="form-control" name="image" id="image" value="{{$page->image}}">
+                </div>
+                <div class="form-group">
+                    <label for="content">Inhalt</label>
                     <input id="content" type="hidden" name="content" value="{{$page->content}}">
                     <trix-editor input="content"></trix-editor>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Update Page</button>
+                    <button type="submit" class="btn btn-success">Aktualisieren</button>
                 </div>
             </form>
         </div>

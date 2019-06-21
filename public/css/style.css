@@ -1,0 +1,12 @@
+#app {
+    background-color: rgba(245,245,245,0.7);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:fixed;
+    background-size:cover;
+}
+
+.container{
+    background-color:rgba(245,245,245,0.7);
+
+}
