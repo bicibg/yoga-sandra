@@ -69,40 +69,22 @@
     </nav>
 
     <main class="py-4">
-        @auth
+        <section class="main-content">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="">Dashboard</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{route('pages.index')}}">Pages</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="">Notifications</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-9">
-                        @if(session()->has('error'))
-                            <div class="alert alert-danger my-5">
-                                {{session()->get('error')}}
-                            </div>
-                        @elseif(session()->has('success'))
-                            <div class="alert alert-success my-5">
-                                {!! session()->get('success') !!}
-                            </div>
-                        @endif
-
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-        @else
-            @yield('content')
-        @endauth
+                @if(!in_array(request()->path(), ['login' ,'register', ' password/email', 'password/reset']))
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger my-5">
+                            {{session()->get('error')}}
+                        </div>
+                    @elseif(session()->has('success'))
+                        <div class="alert alert-success my-5">
+                            {!! session()->get('success') !!}
+                        </div>
+                    @endif
+                @endif
+                @yield('content')
+            </div><!-- /.container -->
+        </section><!-- /.section -->
     </main>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>

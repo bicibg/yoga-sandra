@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pages', 'PagesController');
 });
 
+Route::get('pages/{page}','PagesController@show')->name('pages.show');
+
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
