@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="smart">
+<nav class="navbar navbar-expand-lg bg-light navbar-light navbar-stick-dark" data-navbar="smart">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -14,7 +14,11 @@
             <ul class="navbar-nav mr-auto">
                 @foreach(\App\Page::all() as $page)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('pages.show', $page->slug)}}">{{$page->title}}</a></li>
+                        <a class="nav-link {{
+                        route('pages.show', $page->slug) === url()->current() ||
+                        (route('pages.home') === url()->current() && $page->id === \App\Page::firstOrFail()->id) ?
+                        'active' :
+                        ''}}" href="{{route('pages.show', $page->slug)}}">{{$page->title}}</a></li>
                 @endforeach
             </ul>
 
@@ -22,9 +26,6 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

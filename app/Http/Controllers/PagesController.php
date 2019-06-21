@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ContactUs;
+use App\Http\Requests\CreateContactUsRequest;
 use App\Http\Requests\UpdatePageRequest;
+use App\Jobs\SendEmailJob;
 use App\Page;
 use Illuminate\Support\Str;
 
@@ -24,6 +27,9 @@ class PagesController extends Controller
 
     public function show(Page $page)
     {
+        if ($page->template) {
+            return view($page->template)->withPage($page);
+        }
         return view('pages.show')->withPage($page);
     }
 
@@ -47,9 +53,30 @@ class PagesController extends Controller
         }
 
         $data['slug'] = Str::slug($data['title']);
+        if (!empty($data['content'])) {
+            $dom = new \DomDocument('1.0', 'UTF-8');
+            $dom->loadHtml($data['content'], LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $data['content'] = $dom->savehtml();
+        }
         $page->update($data);
 
         session()->flash('success', 'Updated page successfully');
         return redirect(route('pages.index'));
+    }
+
+    public function contact(CreateContactUsRequest $request)
+    {
+        $mail = array(
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'message' => $request->get('message')
+        );
+        ContactUs::create($mail);
+        dispatch(new SendEmailJob($mail));
+
+
+        session()->flash('success', 'Ihre nachricht wurde geschickt');
+
+        return redirect()->back();
     }
 }

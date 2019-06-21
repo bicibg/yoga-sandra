@@ -7,12 +7,15 @@
         </div>
         <div class="card-body">
             @include('partials.error')
-            <form action="{{route('pages.update',$page->slug)}}" method="POST" id="pageUpdateForm" enctype="multipart/form-data">
+            <form action="{{route('pages.update',$page->slug)}}" method="POST" id="pageUpdateForm"
+                  enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
                 <div class="form-group">
                     <label for="title">Titel</label>
-                    <input type="text" class="form-control" name="title" id="title" value="{{$page->title}}">
+                    <input type="text" {{!empty($page->template) ? 'readonly' : ''}} class="form-control" name="title"
+                           id="title" value="{{$page->title}}">
                 </div>
                 @if($page->image)
                     <div class="form-group text-center">
@@ -25,8 +28,12 @@
                     <input type="file" class="form-control" name="image" id="image" value="{{$page->image}}">
                 </div>
                 <div class="form-group">
-                    <label for="content">Inhalt</label>
-                    <textarea name="content" id="content" cols="30" rows="50">{{$page->content}}</textarea>
+                    @if(empty($page->template))
+                        <label for="content">Inhalt</label>
+                        <textarea name="content" id="content" cols="30" rows="50">{{$page->content}}</textarea>
+                    @else
+                        <input type="hidden" name="content" value="">
+                    @endif
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Aktualisieren</button>
@@ -49,7 +56,7 @@
     <script src="https://cdn.tiny.cloud/1/j53xdzposqqlnom9q27xd3u13c3j6l9jgdofqj2vriz116w6/tinymce/5/tinymce.min.js"></script>
     <script>
         tinymce.init({
-            selector:'#content',
+            selector: '#content',
             plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed tinycomments mentions linkchecker',
             toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment',
             image_advtab: true,
@@ -63,10 +70,10 @@
     </script>
 
     <script type="text/javascript">
-        jQuery(document).ready(function($){
+        jQuery(document).ready(function ($) {
             var content = "";
-            setInterval(function(){
-                if(content !== $("#content").val()){
+            setInterval(function () {
+                if (content !== $("#content").val()) {
                     content = $("#content").val();
                     $('#preview').html(content);
                 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Page extends Model
 {
-    protected $fillable = ['title', 'content', 'image', 'slug'];
+    protected $fillable = ['title', 'content', 'image', 'slug', 'template'];
 
     public function getRouteKeyName()
     {

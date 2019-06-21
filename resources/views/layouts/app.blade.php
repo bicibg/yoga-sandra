@@ -17,8 +17,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <style type="text/css">
-        #app{
-            background-image:url(@yield('background-image'));
+        #app {
+            background-image: url(@yield('background-image'));
         }
     </style>
     @yield('css')
@@ -40,7 +40,7 @@
                         </div>
                     @endif
                 @endif
-                    @yield('content')
+                @yield('content')
             </div><!-- /.container -->
         </section><!-- /.section -->
     </main>
