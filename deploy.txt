@@ -1,0 +1,42 @@
+sudo apt-get install php-pdo php-mbstring php-zip php-xml php-openssl php-tokenizer php-ctype php-json
+sudo a2enmod rewrite
+
+git clone https:/github.com/bicibg/yogaemmental -b dev
+chmod -R 777 storage bootstrap/cache
+
+composer install --optimize-autoloader --no-dev
+composer install
+
+php artisan down
+php artisan config:cache
+php artisan route:cache
+php artisan migrate:fresh --seed
+php artisan queue:restart
+php artisan cache:clear
+php artisan up
+
+
+
+////
+
+NameVirtualHost *:8080
+Listen 8080
+
+<VirtualHost *:8080>
+    ServerAdmin admin@example.com
+    ServerName laravel.dev
+    ServerAlias www.laravel.dev
+    DocumentRoot /home/user/projects/laravel_project/public
+
+    <Directory /home/user/projects/laravel_project/public/>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride All
+            Order allow,deny
+            allow from all
+            Require all granted
+    </Directory>
+
+    LogLevel debug
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
