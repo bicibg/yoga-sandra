@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Bugra Ergin',
                 'email' => 'bugraergin@gmail.com',
                 'password' => \Illuminate\Support\Facades\Hash::make('bugrayep1'),
+                'is_admin' =>true
             ],
         ];
 
