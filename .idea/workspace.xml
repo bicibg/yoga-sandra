@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04372f8f-0be8-4580-9911-0c477893aa56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/0_opt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/1_opt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/2_opt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/initial/img/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/3_opt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/4_opt.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/initial/img/5_opt.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/tracker.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/tracker.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,10 +19,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+        <entry file="file://$PROJECT_DIR$/config/tracker.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+            <state relative-caret-position="1990">
+              <caret line="234" column="36" lean-forward="true" selection-start-line="234" selection-start-column="36" selection-end-line="234" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -45,7 +38,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CMS</find>
       <find>admin</find>
       <find>profile</find>
       <find>Register</find>
@@ -72,6 +64,10 @@
       <find>stats_pa</find>
       <find>getIsAdmin</find>
       <find>pa</find>
+      <find>users</find>
+      <find>summary</find>
+      <find>events</find>
+      <find>errors</find>
     </findStrings>
     <replaceStrings>
       <replace>page</replace>
@@ -111,12 +107,12 @@
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/config/tracker.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/menu.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/edit.blade.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+        <option value="$PROJECT_DIR$/config/tracker.php" />
       </list>
     </option>
   </component>
@@ -319,7 +315,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27657000" />
+    <option name="totallyTimeSpent" value="27872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1987" y="27" width="1853" height="1173" extended-state="6" />
@@ -518,13 +514,6 @@
     <entry file="file://$PROJECT_DIR$/public/templates/sb-admin-2/data/flot-data.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/tracker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="328" column="39" selection-start-line="328" selection-start-column="39" selection-end-line="328" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/menu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -642,6 +631,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/tracker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1990">
+          <caret line="234" column="36" lean-forward="true" selection-start-line="234" selection-start-column="36" selection-end-line="234" selection-end-column="36" />
         </state>
       </provider>
     </entry>

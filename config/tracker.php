@@ -136,7 +136,7 @@ return [
     /*
      * Log events?
      */
-    'log_events' => false,
+    'log_events' => true,
 
     /*
      * Which events do you want to log exactly?
@@ -181,47 +181,47 @@ return [
      *     sudo apt-get purge php5-geoip
      *
      */
-    'log_geoip' => false,
+    'log_geoip' => true,
 
     /*
      * Do you wish to log the user agent?
      */
-    'log_user_agents' => false,
+    'log_user_agents' => true,
 
     /*
      * Do you wish to log your users?
      */
-    'log_users' => false,
+    'log_users' => true,
 
     /*
      * Do you wish to log devices?
      */
-    'log_devices' => false,
+    'log_devices' => true,
 
     /*
      * Do you wish to log languages?
      */
-    'log_languages' => false,
+    'log_languages' => true,
 
     /*
      * Do you wish to log HTTP referers?
      */
-    'log_referers' => false,
+    'log_referers' => true,
 
     /*
      * Do you wish to log url paths?
      */
-    'log_paths' => false,
+    'log_paths' => true,
 
     /*
      * Do you wish to log url queries and query arguments?
      */
-    'log_queries' => false,
+    'log_queries' => true,
 
     /*
      * Do you wish to log routes and route parameters?
      */
-    'log_routes' => false,
+    'log_routes' => true,
 
     /*
      * Log errors and exceptions?
