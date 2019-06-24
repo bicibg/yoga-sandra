@@ -37,6 +37,7 @@
                             <h6 class="dropdown-header">Admin</h6>
                             <a class="dropdown-item" href="{{ route('pages.index') }}">Seitenverwaltung</a>
                             <a class="dropdown-item" href="{{ route('pages.messages') }}">Nachrichten</a>
+                            <a class="dropdown-item" href="{{ route('tracker.stats.index') }}">Stats</a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
