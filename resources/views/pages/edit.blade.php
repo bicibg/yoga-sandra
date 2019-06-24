@@ -30,7 +30,7 @@
                 <div class="form-group">
                     @if(empty($page->template))
                         <label for="content">Inhalt</label>
-                        <textarea name="content" id="content" cols="30" rows="50">{{$page->content}}</textarea>
+                        <textarea name="content" id="content" cols="30" rows="30">{{$page->content}}</textarea>
                     @else
                         <input type="hidden" name="content" value="">
                     @endif

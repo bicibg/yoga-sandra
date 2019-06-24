@@ -13,5 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(PagesTableSeeder::class);
+        $path = 'initial/pages.sql';
+
+        \Illuminate\Support\Facades\DB::unprepared(file_get_contents($path));
+
     }
 }
