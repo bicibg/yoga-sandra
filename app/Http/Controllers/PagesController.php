@@ -79,4 +79,9 @@ class PagesController extends Controller
 
         return redirect()->back();
     }
+
+    public function messages()
+    {
+        return view('messages')->withMessages(ContactUs::all());
+    }
 }

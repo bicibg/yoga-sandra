@@ -36,6 +36,8 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <h6 class="dropdown-header">Admin</h6>
                             <a class="dropdown-item" href="{{ route('pages.index') }}">Seitenverwaltung</a>
+                            <a class="dropdown-item" href="{{ route('pages.messages') }}">Nachrichten</a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
