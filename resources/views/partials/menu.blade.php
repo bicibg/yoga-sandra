@@ -38,6 +38,7 @@
                             <a class="dropdown-item" href="{{ route('pages.index') }}">Seitenverwaltung</a>
                             <a class="dropdown-item" href="{{ route('pages.messages') }}">Nachrichten</a>
                             <a class="dropdown-item" href="{{ route('tracker.stats.index') }}">Stats</a>
+                            <a class="dropdown-item" href="{{ route('maintenance') }}">Maintenance</a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

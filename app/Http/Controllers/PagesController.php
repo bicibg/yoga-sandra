@@ -7,6 +7,7 @@ use App\Http\Requests\CreateContactUsRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Jobs\SendEmailJob;
 use App\Page;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
 
@@ -15,7 +16,7 @@ class PagesController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth'])->only(['edit', 'update']);
+        $this->middleware(['auth'])->except(['show', 'home', 'contact']);
     }
 
     public function index()
@@ -83,5 +84,36 @@ class PagesController extends Controller
     public function messages()
     {
         return view('messages')->withMessages(ContactUs::all());
+    }
+
+    public function maintenance(){
+        return view('maintenance');
+    }
+
+    public function action($action)
+    {
+        switch($action){
+            case 'clear-cache':
+                Artisan::call('cache:clear');
+                session()->flash('success', Artisan::output());
+                return redirect()->back();
+            case 'migrate':
+                Artisan::call('migrate', [
+                    '--force' => true,
+                ]);
+                session()->flash('success', Artisan::output());
+                return redirect()->back();
+            case 'rollback':
+                Artisan::call('migrate:rollback', [
+                    '--force' => true,
+                ]);
+                session()->flash('success', Artisan::output());
+                return redirect()->back();
+            case 'backup':
+                Artisan::call('db:backup');
+                session()->flash('success', Artisan::output());
+                return redirect()->back();
+
+        };
     }
 }

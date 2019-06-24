@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-    <div class="card card-default">
+    <div class="card card-default contactus">
         <div class="card-header">
             Kontaktformular
         </div>

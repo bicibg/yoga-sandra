@@ -21,13 +21,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pages', 'PagesController');
     Route::get('admin','PagesController@index')->name('pages.index');
     Route::get('admin/messages', 'PagesController@messages')->name('pages.messages');
+    Route::get('/maintenance', 'PagesController@maintenance')->name('maintenance');
+    Route::get('/maintenance/{action}', 'PagesController@action')->name('maintenance.action');
 });
 
 Route::get('{page}','PagesController@show')->name('pages.show');
 Route::post('kontakt', 'PagesController@contact')->name('pages.contact');
-
-
-Route::get('/clear-cache', function() {
-    Artisan::call('cache:clear');
-    return "Cache is cleared";
-});
