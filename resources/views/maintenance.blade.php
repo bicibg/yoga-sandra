@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('partials.error')
+
     <div class="card card-default">
         <div class="card-header">Nachrichten</div>
         <div class="card-body">
