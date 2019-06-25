@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
+use Illuminate\Support\Facades\Cookie;
 
 class CheckForMaintenanceMode extends Middleware
 {
@@ -12,6 +13,9 @@ class CheckForMaintenanceMode extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'admin',
+        'maintenance',
+        'admin/messages',
+        'stats'
     ];
 }

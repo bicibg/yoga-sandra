@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePageRequest;
 use App\Jobs\SendEmailJob;
 use App\Page;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 
 
@@ -99,6 +100,18 @@ class PagesController extends Controller
                 Artisan::call('cache:clear');
                 session()->flash('success', Artisan::output());
                 break;
+            case 'clear-view':
+                Artisan::call('view:clear');
+                session()->flash('success', Artisan::output());
+                break;
+            case 'config-cache':
+                Artisan::call('config:cache');
+                session()->flash('success', Artisan::output());
+                break;
+            case 'route-cache':
+                Artisan::call('route:cache');
+                session()->flash('success', Artisan::output());
+                break;
             case 'migrate':
                 Artisan::call('migrate', [
                     '--force' => true,
@@ -111,9 +124,33 @@ class PagesController extends Controller
                 ]);
                 session()->flash('success', Artisan::output());
                 break;
+            case 'seed':
+                Artisan::call('db:seed');
+                session()->flash('success', Artisan::output());
+                break;
             case 'backup':
                 Artisan::call('db:backup');
                 session()->flash('success', Artisan::output());
+                break;
+            case 'queue-work':
+                Artisan::call('queue:work');
+                session()->flash('success', Artisan::output());
+                break;
+            case 'queue-restart':
+                Artisan::call('queue:restart');
+                session()->flash('success', Artisan::output());
+                break;
+            case 'up':
+                Artisan::call('up');
+                session()->flash('success', Artisan::output());
+                break;
+            case 'down':
+                Artisan::call('down');
+                session()->flash('success', Artisan::output());
+                break;
+            case 'give-me-cookie':
+                Cookie::make('secret-cookie', 'secret-cookie-for-admin', 60*24*30);
+                session()->flash('success', '<div class="text-center">&#x1f36a;</div>');
                 break;
             default:
                 session()->flash('error', 'Unknown command ' . '(' . $action . ')');
