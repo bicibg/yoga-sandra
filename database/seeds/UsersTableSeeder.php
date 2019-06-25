@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => 'Frédéric Imber',
-                'email' => 'frediprivat@lucid-reality.com',
+                'email' => 'webmaster@root-login.ch',
                 'password' => '',
                 'is_admin' =>true
             ],

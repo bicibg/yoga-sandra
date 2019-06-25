@@ -130,12 +130,11 @@ class PagesController extends Controller
                 $hasRun = DB::table('migrations')->where('migration', '2019_06_21_185032_create_jobs_table')->exists();
 
                 if (!$hasRun) {
-                    Artisan::call('migrate', [
+                    Artisan::call('migrate:refresh', [
                         '--force' => true,
-                        '--step' => 39,
                         '--seed' => true
                     ]);
-                    session()->flash('maintenance_success', Artisan::output() . ' Rollback caused a database reset resulting a data loss. Automatically performed initial migrations and seeded the database.');
+                    session()->flash('maintenance_success', Artisan::output() . '<br>Rollback caused a database reset resulting a data loss. Automatically performed initial migrations and seeded the database.');
                 } else {
                     session()->flash('maintenance_success', Artisan::output());
                 }
@@ -155,12 +154,12 @@ class PagesController extends Controller
                 session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'queue-work':
-                Artisan::call('queue:work');
-                session()->flash('maintenance_success', Artisan::output());
+                Artisan::queue('queue:work');
+                session()->flash('maintenance_success', 'Queue worker started');
                 break;
             case 'queue-restart':
                 Artisan::call('queue:restart');
-                session()->flash('maintenance_success', Artisan::output());
+                session()->flash('maintenance_success', 'Queue worker restarted');
                 break;
             case 'up':
                 Artisan::call('up');

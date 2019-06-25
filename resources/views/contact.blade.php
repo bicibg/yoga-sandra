@@ -4,6 +4,8 @@
 
 @endsection
 @section('content')
+    @include('partials.error')
+
     <div class="card card-default contactus">
         <div class="card-header">
             Kontaktformular
