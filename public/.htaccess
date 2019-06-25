@@ -1,3 +1,47 @@
+
+<if "%{HTTPS} == 'on'">
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</if>
+
+Options -Indexes
+
+# Catch attack attempts by user agent
+RewriteCond %{HTTP_USER_AGENT}				^(.*)(_(COOKIE|ENV|FILES|GET|POST|REQUEST|SE(RVER|SSION))|char(%28|\x28)|base64_(de|en)code|create_function|display_error|eval(%28|\x28)|file_[a-z_]+(%28|\x28)|in(clude(_one)?(%28|\x28)|i_set)|preg_replace|require(_one)?(%28|\x28)|s(tr_rep(eat|lace)|ystem(%28|\x28)))(.+)$
+RewriteCond %{REQUEST_URI}					(?!\.(css|gif|ico|j(pg|s)|png)).{4}$
+RewriteRule	^								index_ac.php?user_agent_code_injection	[NC,L]
+
+# Catch attack attempts by request uri and/or query string used to inject PHP code
+RewriteCond %{REQUEST_URI}%{QUERY_STRING}	^(.*)(_(COOKIE|ENV|FILES|GET|POST|REQUEST|SE(RVER|SSION))|char(%28|\x28)|base64_(de|en)code|create_function|display_error|eval(%28|\x28)|file_[a-z_]+(%28|\x28)|in(clude(_one)?(%28|\x28)|i_set)|preg_replace|require(_one)?(%28|\x28)|s(tr_rep(eat|lace)|ystem(%28|\x28)))(.+)$
+RewriteRule	^								index_ac.php?uri_code_injection	[NC,L]
+
+# Catch known access attempts
+RewriteCond %{REQUEST_URI}%{QUERY_STRING}	^(.*)(\.git\/|\.sql|drupal|loggers\x2Fget|wp\-login|xmlrpc)(.+)$
+RewriteRule	^								index_ac.php	[NC,L]
+
+## Base Redirects ##
+
+# Turn on Rewrite Engine
+RewriteEngine On
+
+# Redirect to secure HTTPS before changing host
+RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+RewriteCond %{https} off  
+RewriteRule ^(.*)$ https://yogaemmental.ch/$1 [R=301,L]
+
+# Remove trailing slash from non-filepath urls
+RewriteCond %{REQUEST_URI} /(.+)/$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ https://www.yogaemmental.ch/%1 [R=301,L]
+
+# Include trailing slash on directory 
+RewriteCond %{REQUEST_URI} !(.+)/$
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+)$ https://www.yogaemmental.ch/$1/ [R=301,L]
+
+# Force HTTPS and WWW 
+RewriteCond %{HTTP_HOST} !^www\.(.*)$ [OR,NC]
+RewriteCond %{https} off  
+RewriteRule ^(.*)$ https://www.yogaemmental.ch/$1 [R=301,L]
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
