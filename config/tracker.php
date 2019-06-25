@@ -41,6 +41,7 @@ return [
      */
     'do_not_track_paths' => [
         'api/*',
+        'templates/*'
     ],
 
     /*
