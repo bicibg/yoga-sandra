@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04372f8f-0be8-4580-9911-0c477893aa56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/contact.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/0ybVEsOFpa42zMYiliViUxgimIl6H3rxgd1Vr0iP.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/6bmX3RHBDRQEVIrMeycMgUBc2t43rkR0WVEh0Hrp.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/FQHUzgZEO2XhV19aNgnKEIjd8EV2xJr0yXSCCUrb.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/KyUxTpSbtmkWJlyEV35YjoF0UGbrG9LQTvfp9pFn.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/Nyt6N6bFsvkCfbkwvKUZ17ivIDCcLlTzwPymd9mZ.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/OfJkk8vj70Gp67u6l5pqTslsmLJT3hwyIpNthR8q.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/PRixnvJwiRPGUIiNH4pxj11VYZWzVLHYUpu6QIm1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/TwEGkRSqJypUlCgRDmlDPb2yzoTHzhhmf8eywNyU.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/d6XhWI8mEOFFFAsTvWTnOEY5fOpN2tQLo4GCyljO.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/ePTwwxoFPDSv9BLTsDZEUDuXjNdxP5acqkBnsdmq.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/fvhb6PxJFmXgkGPVrCLLA8u43iumAsZjOdnIpEo3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/pages/hilXYHRT6FEfUmFwAX6RpUBZrOUMQSrholtJW1sx.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/backups/201906241601.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/backups/201906241603.sql" beforeDir="false" />
-    </list>
+    <list default="true" id="04372f8f-0be8-4580-9911-0c477893aa56" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +14,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
+        <entry file="file://$PROJECT_DIR$/deploy.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+            <state relative-caret-position="425">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -276,67 +257,6 @@
               <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
               <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="yogaemmental" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yogaemmental" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="backups" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -406,7 +326,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43332000" />
+    <option name="totallyTimeSpent" value="43628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
@@ -598,13 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/app/public/pages/TyNPf1KAMZl5egmUiN396xjEkRucKmirZiNGYzmZ.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -725,6 +638,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
           <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="33" />
         </state>
       </provider>
     </entry>
