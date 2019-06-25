@@ -18,6 +18,18 @@ class UsersTableSeeder extends Seeder
                 'password' => \Illuminate\Support\Facades\Hash::make('bugrayep1'),
                 'is_admin' =>true
             ],
+            [
+                'name' => 'Sandra Kuhlmann',
+                'email' => 'info@sothegra.ch',
+                'password' => '',
+                'is_admin' =>true
+            ],
+            [
+                'name' => 'Frédéric Imber',
+                'email' => 'frediprivat@lucid-reality.com',
+                'password' => '',
+                'is_admin' =>true
+            ],
         ];
 
         foreach ($prodUsers as $userData) {

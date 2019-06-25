@@ -7,8 +7,10 @@ use App\Http\Requests\CreateContactUsRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Jobs\SendEmailJob;
 use App\Page;
+use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
@@ -98,62 +100,82 @@ class PagesController extends Controller
         switch ($action) {
             case 'clear-cache':
                 Artisan::call('cache:clear');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'clear-view':
                 Artisan::call('view:clear');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'config-cache':
                 Artisan::call('config:cache');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'route-cache':
                 Artisan::call('route:cache');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'migrate':
+                Artisan::call('db:backup');
                 Artisan::call('migrate', [
                     '--force' => true,
                 ]);
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'rollback':
+                Artisan::call('db:backup');
                 Artisan::call('migrate:rollback', [
                     '--force' => true,
                 ]);
-                session()->flash('success', Artisan::output());
+
+                $hasRun = DB::table('migrations')->where('migration', '2019_06_21_185032_create_jobs_table')->exists();
+
+                if (!$hasRun) {
+                    Artisan::call('migrate', [
+                        '--force' => true,
+                        '--step' => 39,
+                        '--seed' => true
+                    ]);
+                    session()->flash('maintenance_success', Artisan::output() . ' Rollback caused a database reset resulting a data loss. Automatically performed initial migrations and seeded the database.');
+                } else {
+                    session()->flash('maintenance_success', Artisan::output());
+                }
                 break;
             case 'seed':
-                Artisan::call('db:seed');
-                session()->flash('success', Artisan::output());
+                $latest = DB::table('migrations')->latest('id')->first();
+                if(!empty($latest) && $latest->migration !== '2019_06_21_185032_create_jobs_table') {
+                    Artisan::call('db:backup');
+                    Artisan::call('db:seed');
+                    session()->flash('maintenance_success', Artisan::output());
+                } else {
+                    session()->flash('maintenance_success', 'Cannot seed');
+                }
                 break;
             case 'backup':
                 Artisan::call('db:backup');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'queue-work':
                 Artisan::call('queue:work');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'queue-restart':
                 Artisan::call('queue:restart');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'up':
                 Artisan::call('up');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'down':
                 Artisan::call('down');
-                session()->flash('success', Artisan::output());
+                session()->flash('maintenance_success', Artisan::output());
                 break;
             case 'give-me-cookie':
-                Cookie::make('secret-cookie', 'secret-cookie-for-admin', 60*24*30);
-                session()->flash('success', '<div class="text-center">&#x1f36a;</div>');
+                Cookie::make('secret-cookie', 'secret-cookie-for-admin', 60 * 24 * 30);
+                session()->flash('maintenance_success', '<div class="text-center">&#x1f36a;</div>');
                 break;
             default:
-                session()->flash('error', 'Unknown command ' . '(' . $action . ')');
+                session()->flash('maintenance_error', 'Unknown command ' . '(' . $action . ')');
 
 
         };

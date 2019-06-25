@@ -26,6 +26,7 @@ class UpdatePageRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'image' => 'mimes:jpeg,jpg,png'
         ];
     }
 }
