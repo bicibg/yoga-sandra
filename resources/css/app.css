@@ -1,0 +1,157 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+html{
+    min-width: 650px;
+    height: 100%;
+    position: relative;
+    font-family: sans-serif;
+}
+
+body{
+    margin: 0 auto;
+    height: 100%;
+    background-color: #F5F5F5;
+}
+#app {
+    padding-bottom: 5%;
+    min-height: 100%;
+    background-color: rgba(245,245,245,0.7);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:fixed;
+    background-size:cover;
+}
+main{
+    background-color:rgba(245,245,245,0.7);
+    height:100%;
+    overflow-y: auto;
+    margin: 3% 5%;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link.active {
+    color: #0d6efd; /* Bootstrap primary color */
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #0d6efd;
+}
+
+.btn-outline-primary {
+    border-width: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.btn-primary {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+.container p {
+    margin: 1em 0;
+    min-height: 1em;
+}
+
+/* General styling for the contact form */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fdf6f8; /* Soft pastel background */
+    border: 1px solid #f7dfe5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Header styling */
+.card-header {
+    background: linear-gradient(90deg, #d8a7b1, #e4b2bc); /* Pastel rose gradient */
+    color: #ffffff;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #f7dfe5;
+}
+
+/* Input fields */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #e9cbd3;
+    background-color: #fdf6f8; /* Match card background */
+    transition: box-shadow 0.2s, border-color 0.2s;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #d8a7b1;
+    box-shadow: 0 0 4px rgba(216, 167, 177, 0.5);
+    outline: none;
+}
+
+/* Label styling */
+.form-label {
+    font-weight: 600;
+    color: #b68a94; /* Muted pastel text */
+    font-size: 1rem;
+}
+
+/* Textarea styling */
+textarea.form-control {
+    resize: none;
+}
+
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(90deg, #d8a7b1, #e4b2bc); /* Pastel rose gradient */
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, #e4b2bc, #d8a7b1); /* Reverse gradient */
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Card body spacing */
+.card-body {
+    padding: 2rem;
+}
+
+/* Small screen adjustments */
+@media (max-width: 576px) {
+    .card {
+        margin: 1rem;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+
