@@ -61,19 +61,20 @@ class PageResource extends Resource
 
             \Filament\Forms\Components\Section::make('Medien')
                 ->schema([
-
                     FileUpload::make('image')
                         ->label('Bild hochladen')
-                        ->disk('public') // ✅ Ensure it's using public disk
+                        ->disk('public') // ✅ Ensure it uses public storage
                         ->directory('pages') // ✅ Keep storage consistent
                         ->visibility('public') // ✅ Make sure it's publicly accessible
                         ->image()
                         ->preserveFilenames()
-                        ->maxFiles(1) // ✅ Ensure single file uploads
+                        ->maxFiles(1) // ✅ Ensures Filament expects a single file (fixes foreach error)
+                        ->getUploadedFileNameForStorageUsing(fn($file
+                        ) => $file->getClientOriginalName()) // ✅ Ensures correct filename storage
                         ->afterStateHydrated(function ($state, callable $set) {
-                            if ($state) {
-                                // Convert the stored file path to a full URL
-                                $set('image', Storage::url($state));
+                            if ($state && is_string($state)) {
+                                // ✅ Convert single file path to an array to prevent the foreach() error
+                                $set('image', [$state]);
                             }
                         })
                 ]),
