@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
 use FilamentTiptapEditor\TiptapEditor;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class PageResource extends Resource
@@ -62,11 +63,14 @@ class PageResource extends Resource
                 ->schema([
                     FileUpload::make('image')
                         ->label('Bild hochladen')
-                        ->disk('public') // Ensure it uses public storage
-                        ->directory('pages') // Ensure consistency
-                        ->visibility('public') // Make sure it's publicly accessible
+                        ->disk('public')
+                        ->directory('pages')
+                        ->visibility('public')
                         ->image()
                         ->preserveFilenames()
+                        ->afterStateHydrated(function ($state) {
+                            Log::info('Filament Form - Image Path:', ['image_path' => $state]);
+                        })
                 ]),
         ]);
     }
