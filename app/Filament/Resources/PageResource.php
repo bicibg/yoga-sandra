@@ -62,12 +62,12 @@ class PageResource extends Resource
                 ->schema([
                     FileUpload::make('image')
                         ->label('Bild hochladen')
-                        ->disk('public') // Ensure it's stored in the public disk
+                        ->disk('public') // Ensure it uses the public disk
                         ->directory('pages') // Ensure consistency
                         ->visibility('public') // Make sure it's publicly accessible
                         ->image()
                         ->preserveFilenames()
-                        ->afterStateHydrated(fn($state, callable $set) => $set('image', Storage::url($state)))
+                        ->afterStateHydrated(fn($state, callable $set, $record) => $set('image', $record->image_url))
                 ]),
         ]);
     }
