@@ -64,19 +64,21 @@ class PageResource extends Resource
                     FileUpload::make('image')
                         ->label('Bild hochladen')
                         ->disk('public') // ✅ Ensure it uses public storage
-                        ->directory('pages') // ✅ Keep storage consistent
-                        ->visibility('public') // ✅ Make sure it's publicly accessible
+                        ->directory('pages') // ✅ Store inside "storage/app/public/pages/"
+                        ->visibility('public') // ✅ Ensure it's publicly accessible
                         ->image()
                         ->preserveFilenames()
-                        ->maxFiles(1) // ✅ Ensures Filament expects a single file (fixes foreach error)
+                        ->maxFiles(1) // ✅ Ensures Filament expects a single file
                         ->getUploadedFileNameForStorageUsing(fn($file
-                        ) => $file->getClientOriginalName()) // ✅ Ensures correct filename storage
-                        ->afterStateHydrated(function ($state, callable $set) {
+                        ) => $file->getClientOriginalName()) // ✅ Store only the filename
+                        ->afterStateHydrated(function ($state, callable $set, $record) {
                             if ($state && is_string($state)) {
-                                // ✅ Convert single file path to an array to prevent the foreach() error
-                                $set('image', [$state]);
+                                // ✅ Convert stored relative path into a full URL for display
+                                $set('image', Storage::url($state));
                             }
                         })
+                        ->dehydrateStateUsing(fn($state) => str_replace(Storage::url(''), '', $state))
+
                 ]),
         ]);
     }
