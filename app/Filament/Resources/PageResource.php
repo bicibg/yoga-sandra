@@ -73,8 +73,8 @@ class PageResource extends Resource
                         ) => $file->getClientOriginalName()) // ✅ Store only the filename
                         ->afterStateHydrated(function ($state, callable $set, $record) {
                             if ($state && is_string($state)) {
-                                // ✅ Convert stored relative path into a full URL for display
-                                $set('image', Storage::url($state));
+                                // Convert the stored file path to an array or object if necessary
+                                $set('image', [$state]); // Wrap the string in an array
                             }
                         })
                         ->dehydrateStateUsing(fn($state) => str_replace(Storage::url(''), '', $state))
