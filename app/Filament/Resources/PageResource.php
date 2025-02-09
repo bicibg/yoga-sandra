@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Facades\Storage;
+use SplFileInfo;
 
 class PageResource extends Resource
 {
@@ -62,12 +63,13 @@ class PageResource extends Resource
                 ->schema([
                     FileUpload::make('image')
                         ->label('Bild hochladen')
-                        ->disk('public') // Ensure it uses the public disk
+                        ->disk('public') // Ensure public storage is used
                         ->directory('pages') // Ensure consistency
-                        ->visibility('public') // Make sure it's publicly accessible
+                        ->visibility('public') // Ensure accessibility
                         ->image()
                         ->preserveFilenames()
-                        ->afterStateHydrated(fn($state, callable $set, $record) => $set('image', $record->image_url))
+                        ->maxFiles(1) // ✅ Explicitly allow only one file
+                        ->getUploadedFileNameForStorageUsing(fn(SplFileInfo $file) => $file->getClientOriginalName())
                 ]),
         ]);
     }
