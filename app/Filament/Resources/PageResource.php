@@ -61,8 +61,11 @@ class PageResource extends Resource
                 ->schema([
                     FileUpload::make('image')
                         ->label('Bild hochladen')
+                        ->disk('public')
                         ->directory('pages')
-                        ->image(),
+                        ->visibility('public')
+                        ->image()
+
                 ]),
         ]);
     }
