@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
 use FilamentTiptapEditor\TiptapEditor;
+use Illuminate\Support\Facades\Storage;
 
 class PageResource extends Resource
 {
@@ -83,6 +84,7 @@ class PageResource extends Resource
 
             Tables\Columns\ImageColumn::make('image')
                 ->label('Bild')
+                ->getStateUsing(fn($record) => $record->image_url)
                 ->size(50),
 
             Tables\Columns\TextColumn::make('created_at')
