@@ -61,10 +61,11 @@ class PageResource extends Resource
                 ->schema([
                     FileUpload::make('image')
                         ->label('Bild hochladen')
-                        ->disk('public')
-                        ->directory('pages')
-                        ->visibility('public')
+                        ->disk('public') // Ensure it's using public storage
+                        ->directory('pages') // Ensure consistency with your storage path
+                        ->visibility('public') // Make it accessible
                         ->image()
+                        ->preserveFilenames() // Prevents Laravel from renaming the file
 
                 ]),
         ]);
