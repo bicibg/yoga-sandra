@@ -13,7 +13,6 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Facades\Storage;
-use SplFileInfo;
 
 class PageResource extends Resource
 {
@@ -35,6 +34,10 @@ class PageResource extends Resource
                         ->label('Slug')
                         ->required()
                         ->maxLength(255),
+
+                    TextInput::make('sorting')
+                        ->label('Seitenreihenfolge')
+                        ->disabled(),
                 ]),
 
             \Filament\Forms\Components\Section::make('Inhalt')
@@ -63,22 +66,11 @@ class PageResource extends Resource
                 ->schema([
                     FileUpload::make('image')
                         ->label('Bild hochladen')
-                        ->disk('public') // ✅ Ensure it uses public storage
-                        ->directory('pages') // ✅ Store inside "storage/app/public/pages/"
-                        ->visibility('public') // ✅ Ensure it's publicly accessible
+                        ->disk('public')
+                        ->directory('pages')
+                        ->visibility('public')
                         ->image()
-                        ->preserveFilenames()
-                        ->maxFiles(1) // ✅ Ensures Filament expects a single file
-                        ->getUploadedFileNameForStorageUsing(fn($file
-                        ) => $file->getClientOriginalName()) // ✅ Store only the filename
-                        ->afterStateHydrated(function ($state, callable $set, $record) {
-                            if ($state && is_string($state)) {
-                                // Convert the stored file path to an array or object if necessary
-                                $set('image', [$state]); // Wrap the string in an array
-                            }
-                        })
-                        ->dehydrateStateUsing(fn($state) => str_replace(Storage::url(''), '', $state))
-
+                        ->maxSize(10000)
                 ]),
         ]);
     }
@@ -94,16 +86,19 @@ class PageResource extends Resource
                 ->label('Slug')
                 ->sortable(),
 
+            Tables\Columns\TextColumn::make('sorting')
+                ->label('Seitenreihenfolge')
+                ->sortable(),
+
             Tables\Columns\ImageColumn::make('image')
                 ->label('Bild')
-                ->getStateUsing(fn($record) => $record->image_url)
                 ->size(50),
 
             Tables\Columns\TextColumn::make('created_at')
                 ->label('Erstellt am')
                 ->date(),
         ])
-            ->filters([]);
+            ->reorderable('sorting');
     }
 
     public static function getPages(): array

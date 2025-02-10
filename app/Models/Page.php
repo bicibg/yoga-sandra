@@ -13,10 +13,4 @@ class Page extends Model
     {
         return 'slug';
     }
-
-    public function getImageUrlAttribute(): ?string
-    {
-        return $this->image ? Storage::url($this->image) : null;
-    }
-
 }
